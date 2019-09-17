@@ -29,8 +29,8 @@ ss = preprocessing.StandardScaler()
 train_ss_x = ss.fit_transform(train_x)
 test_ss_x = ss.transform(test_x)
 
-# 创建LR分类器
-lr = LogisticRegression()
-lr.fit(train_ss_x, train_y)
-predict_y=lr.predict(test_ss_x)
-print('SVM准确率: %0.4lf' % accuracy_score(predict_y, test_y))
+# 创建Tree分类器
+clf = tree.DecisionTreeClassifier(criterion='gini')
+clf = clf.fit(train_ss_x, train_y)
+predict_y=clf.predict(test_ss_x)
+print('准确率: %0.4lf' % accuracy_score(predict_y, test_y))
